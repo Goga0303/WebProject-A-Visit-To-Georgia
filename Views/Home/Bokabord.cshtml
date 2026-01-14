@@ -1,0 +1,51 @@
+@model A_Visit_To_Georgia.Models.Bokningbord
+@{
+    ViewData["Title"] = "Boka bord";
+}
+
+<div class="container">
+  <div class="section form-card">
+    <h1 class="mb-3">Boka bord</h1>
+
+    <form asp-controller="Databas" asp-action="Skapa" method="post" novalidate>
+      <!-- Visa ev. serverside-validering -->
+      <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <label asp-for="Namn" class="form-label">Namn</label>
+          <input asp-for="Namn" class="form-control form-control-lg" />
+          <span asp-validation-for="Namn" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label asp-for="Datum" class="form-label">Datum</label>
+          <input asp-for="Datum" type="date" class="form-control" />
+          <span asp-validation-for="Datum" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label asp-for="Tid" class="form-label">Tid</label>
+          <input asp-for="Tid" type="time" class="form-control" />
+          <span asp-validation-for="Tid" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label asp-for="AntalPersoner" class="form-label">Antal gäster</label>
+          <input asp-for="AntalPersoner" type="number" min="1" class="form-control" />
+          <span asp-validation-for="AntalPersoner" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12">
+          <label asp-for="Kommentar" class="form-label">Kommentar</label>
+          <textarea asp-for="Kommentar" rows="4" class="form-control" placeholder="Allergier, barnstol ..."></textarea>
+          <span asp-validation-for="Kommentar" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12 d-grid d-md-flex justify-content-md-end mt-1">
+          <button type="submit" class="btn btn-primary btn-lg px-4">Spara bokning</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

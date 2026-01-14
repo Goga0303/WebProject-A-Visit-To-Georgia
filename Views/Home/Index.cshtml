@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Startsida";
+}
+
+<div id="heroCarousel" class="carousel slide hero-fit" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="~/image/bild1.png" class="hero-img" alt="Khachapuri">
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/image/bild2.png" class="hero-img" alt="Khinkali">
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/image/bild3.png" class="hero-img" alt="Restaurant interior">
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-controller="Home" asp-action="Bokabord" class="btn btn-primary btn-lg me-2">Boka bord</a>
+    <a asp-controller="Home" asp-action="SeVarMeny" class="btn btn-outline-light btn-lg">Se vår meny</a>
+</div>

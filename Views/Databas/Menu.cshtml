@@ -1,0 +1,53 @@
+@model IEnumerable<A_Visit_To_Georgia.Models.MenuItem>
+@{
+    ViewData["Title"] = "Meny";
+}
+<div class="container">
+    <div class="section bookings-card">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
+            <h1 class="m-0">Meny</h1>
+            <a asp-action="MenuCreate" class="btn btn-primary">Lägg till rätt</a>
+        </div>
+
+        @if (!(Model?.Any() ?? false))
+        {
+            <p class="mb-0">Inga rätter ännu.</p>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle bookings-table mb-0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Namn</th>
+                        <th>Kategori</th>
+                        <th>Pris</th>
+                        <th>Beskrivning</th>
+                        <th style="width:140px;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var m in Model)
+                    {
+                        <tr>
+                            <td>@m.Id</td>
+                            <td>@m.Namn</td>
+                            <td>@m.Kategori</td>
+                            <td>@m.Pris</td>
+                            <td class="text-truncate" style="max-width:420px;">@m.Beskrivning</td>
+                            <td class="text-end">
+                                <a class="btn btn-sm btn-warning me-1" asp-action="MenuEdit" asp-route-id="@m.Id">Ändra</a>
+                                <a class="btn btn-sm btn-danger" asp-action="MenuDelete" asp-route-id="@m.Id">Radera</a>
+                                <a asp-controller="Home" asp-action="SeVarMeny" target="_blank" class="btn btn-outline-light">
+                                    Förhandsgranska meny
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,56 @@
+@model A_Visit_To_Georgia.Models.Bokningbord
+@{
+    ViewData["Title"] = "Redigera bokning";
+}
+
+<div class="container">
+    <div class="form-card mt-4">
+
+        <h2 class="text-center mb-4">Redigera bokning</h2>
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label class="form-label">Namn</label>
+                <input asp-for="Namn" class="form-control" placeholder="Fullständigt namn"/>
+                <span asp-validation-for="Namn" class="text-danger small"></span>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Datum</label>
+                    <input type="date" asp-for="Datum" class="form-control"/>
+                    <span asp-validation-for="Datum" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">Tid</label>
+                    <input type="time" asp-for="Tid" class="form-control"/>
+                    <span asp-validation-for="Tid" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Antal personer</label>
+                <input asp-for="AntalPersoner" type="number" min="1" class="form-control"/>
+                <span asp-validation-for="AntalPersoner" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Kommentar</label>
+                <textarea asp-for="Kommentar" class="form-control" rows="3"
+                          placeholder="Allergier, önskemål osv"></textarea>
+                <span asp-validation-for="Kommentar" class="text-danger small"></span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" asp-action="Index">Avbryt</a>
+                <button class="btn btn-primary" type="submit">Spara ändringar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+}

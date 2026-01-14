@@ -1,0 +1,27 @@
+@model A_Visit_To_Georgia.Models.MenuItem
+@{
+    ViewData["Title"] = "Radera rätt";
+}
+<div class="container">
+    <div class="section bookings-card">
+        <h1 class="mb-3">Radera rätt</h1>
+        <p>Är du säker på att du vill radera <strong>@Model.Namn</strong>?</p>
+
+        <dl class="row">
+            <dt class="col-sm-2">Kategori</dt>
+            <dd class="col-sm-10">@Model.Kategori</dd>
+
+            <dt class="col-sm-2">Pris</dt>
+            <dd class="col-sm-10">@Model.Pris</dd>
+
+            <dt class="col-sm-2">Beskrivning</dt>
+            <dd class="col-sm-10">@Model.Beskrivning</dd>
+        </dl>
+
+        <form asp-action="MenuDelete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button class="btn btn-danger" type="submit">Radera</button>
+            <a asp-action="Menu" class="btn btn-secondary ms-2">Avbryt</a>
+        </form>
+    </div>
+</div>

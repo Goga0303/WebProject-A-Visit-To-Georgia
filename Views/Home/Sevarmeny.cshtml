@@ -1,0 +1,42 @@
+@model IEnumerable<A_Visit_To_Georgia.Models.MenuItem>
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Meny";
+
+    // Gruppiera säkert (fallback "Övrigt"), sortera grupper och rätter
+    var grupper = (Model ?? Enumerable.Empty<A_Visit_To_Georgia.Models.MenuItem>())
+        .GroupBy(m => string.IsNullOrWhiteSpace(m.Kategori) ? "Övrigt" : m.Kategori!)
+        .OrderBy(g => g.Key, StringComparer.CurrentCultureIgnoreCase);
+}
+
+<div class="container">
+    <h1 class="mb-3">Meny</h1>
+
+    <div class="menu-grid">
+        @foreach (var grp in grupper)
+        {
+            <div class="menu-card section">
+                <h3>@grp.Key</h3>
+
+                <ul class="menu-list">
+                    @foreach (var r in grp.OrderBy(x => x.Namn))
+                    {
+                        <li>
+                            <span>@r.Namn</span>
+
+                            <span class="price">
+                                @r.Pris.ToString("0.##", new CultureInfo("sv-SE")) kr
+                            </span>
+
+                            @if (!string.IsNullOrWhiteSpace(r.Beskrivning))
+                            {
+                                <div class="desc">@r.Beskrivning</div>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
